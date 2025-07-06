@@ -1,0 +1,117 @@
+
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Generador de Códigos QR para Clientes - jsPDF</title>
+
+<!-- Font Awesome y librerías necesarias -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<!-- Incluye jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f0f0f0;
+    padding: 20px;
+  }
+  h2 { text-align: center; }
+  #generar { margin-top: 20px; }
+  #codigoContainer { display: none; }
+  /* Puedes agregar más estilos si quieres */
+</style>
+</head>
+<body>
+
+<h2>Generador de Códigos QR para Clientes - jsPDF</h2>
+
+<div style="text-align:center;">
+  <label for="cantidad">Cantidad de códigos a generar:</label>
+  <input type="number" id="cantidad" min="1" max="40" value="12" />
+  <button id="generar">Generar Códigos</button>
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+  <button onclick="generarPDFConJsPDF()"><i class="fas fa-file-pdf"></i> Descargar PDF con Códigos QR</button>
+</div>
+
+<script>
+const { jsPDF } = window.jspdf;
+
+const btnGenerar = document.getElementById('generar');
+const containerQR = document.createElement('div');
+
+let qrImages = []; // Para guardar las imágenes QR en base64
+
+btnGenerar.onclick = () => {
+  qrImages = [];
+  containerQR.innerHTML = '';
+
+  const cantidad = parseInt(document.getElementById('cantidad').value);
+  for (let i = 0; i < cantidad; i++) {
+    crearCodigo(i);
+  }
+};
+
+function crearCodigo(index) {
+  const codigo = 'CODE' + Date.now() + '-' + index;
+  const urlConCodigo = `https://encuentramisllaves.neocities.org/?codigo=${encodeURIComponent(codigo)}`;
+
+  // Crear un canvas para generar el QR
+  const canvas = document.createElement('canvas');
+
+  QRCode.toCanvas(canvas, urlConCodigo, { width: 180 }).then(() => {
+    // Convertir canvas a DataURL
+    const dataUrl = canvas.toDataURL('image/png');
+    // Guardar en array
+    qrImages.push(dataUrl);
+  });
+}
+
+function generarPDFConJsPDF() {
+  if (qrImages.length === 0) {
+    alert('Primero genera los códigos QR.');
+    return;
+  }
+
+  const pdf = new jsPDF({
+    orientation: 'landscape',
+    unit: 'mm',
+    format: 'a4'
+  });
+
+  const widthQR = 40; // ancho en mm
+  const heightQR = 40; // alto en mm
+  const marginX = 2; // margen izquierdo
+  const marginY = 2; // margen superior
+  const gapX = 2; // espacio entre QR en horizontal
+  const gapY = 2; // espacio entre filas
+
+  let x = marginX;
+  let y = marginY;
+  let colCount = 0;
+
+  qrImages.forEach((imgData, index) => {
+    // Añadir la imagen al PDF en posición (x, y)
+    pdf.addImage(imgData, 'PNG', x, y, widthQR, heightQR);
+    colCount++;
+    if (colCount % 6 === 0) {
+      // Siguiente fila
+      x = marginX;
+      y += heightQR + gapY;
+    } else {
+      // Siguiente columna
+      x += widthQR + gapX;
+    }
+  });
+
+  // Guardar el PDF
+  pdf.save('codigos_qr.pdf');
+}
+</script>
+
+</body>
+</html>

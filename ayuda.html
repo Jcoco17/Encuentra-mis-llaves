@@ -1,0 +1,163 @@
+
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preguntas Frecuentes (FAQs) - Códigos QR</title>
+
+<!-- Estilos para FAQs -->
+<style>
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  .faq-question {
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question:hover {
+    background-color: #f9f9f9;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 15px;
+  }
+  .faq-answer.show {
+    max-height: 500px; /* suficiente para responder */
+    padding: 15px;
+  }
+  /* Estilos para los iconos de flecha */
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+  .arrow.rotate {
+    transform: rotate(90deg);
+  }
+</style>
+</head>
+<body>
+
+<h1>Preguntas Frecuentes (FAQs) - Códigos QR</h1>
+<div class="faq-container">
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Qué es un código QR?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Un código QR (Quick Response) es un código de barras bidimensional que puede almacenar información como URLs, texto, datos de contacto, etc. Se puede escanear con la cámara de un smartphone para acceder rápidamente a la información.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Para qué sirven los códigos QR en mi servicio?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Nuestros códigos QR sirven para identificar y localizar llaves perdidas, facilitar la devolución, y gestionar la información de contacto de manera rápida y sencilla mediante escaneo con el teléfono.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Cómo funciona el proceso de compra?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Seleccionas la cantidad de códigos QR que deseas, realizas el pago a través de PayPal, y una vez confirmado, recibes un enlace para descargar un PDF con todos los códigos QR generados.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Qué pasa si no recibo el enlace para descargar?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Asegúrate de haber completado la compra y de que tu navegador no bloquea ventanas emergentes. Si aún así no recibes el enlace, contacta con nuestro soporte.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Puedo usar los códigos QR en diferentes dispositivos?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Sí, los códigos son independientes del dispositivo y pueden ser escaneados con cualquier smartphone o lector de QR. También puedes imprimir los códigos y usarlos en papel.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Qué seguridad tiene el proceso de pago?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Utilizamos la plataforma PayPal, que es segura y confiable, garantizando la protección de tus datos y transacciones.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Qué hago si el código QR no funciona?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Verifica que el código QR esté completo y limpio. Si sigue sin funcionar, contacta con nuestro soporte para asistencia.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Puedo solicitar códigos QR personalizados?</span>
+      <span class="arrow">&#9654;</span>
+    </div>
+    <div class="faq-answer">
+      Actualmente ofrecemos códigos estándar. Para solicitudes especiales, contacta con nuestro soporte para consultarlo.
+    </div>
+  </div>
+
+  <!-- Añade más preguntas según necesites -->
+
+</div>
+
+<!-- Script para el acordeón -->
+<script>
+  document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+      const answer = item.nextElementSibling;
+      const arrow = item.querySelector('.arrow');
+
+      answer.classList.toggle('show');
+      arrow.classList.toggle('rotate');
+    });
+  });
+</script>
+
+</body>
+</html>

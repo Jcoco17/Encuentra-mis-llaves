@@ -1,0 +1,69 @@
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Recuadro de información */
+.recuadro-informacion {
+  border: 2px solid #444;
+  padding: 15px;
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Input de texto */
+input[type="text"] {
+  padding: 15px;
+  font-size: 1.2em;
+  border: 2px solid #555;
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+}
+
+/* Estado de foco en input */
+input[type="text"]:focus {
+  border-color: #ff6f61;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+/* Botón */
+button {
+  padding: 15px 25px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 5px;
+  background: linear-gradient(135deg, #ff6f61, #ffb347);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icono dentro del botón */
+button i {
+  margin-right: 8px;
+}
+
+/* Hover en botón */
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #ff4c3b, #ff8f50);
+}
